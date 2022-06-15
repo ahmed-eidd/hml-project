@@ -5,5 +5,14 @@
     color: $color-primary;
     font-size: $text-md;
     font-weight: $semi-bold;
+    text-transform: uppercase;
+  }
+  li:last-child {
+    font-weight: $regular;
+    text-transform: capitalize;
+  }
+  span {
+    @include flex(center, center);
+    margin: 0 1rem;
   }
 }

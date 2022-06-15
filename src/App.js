@@ -22,7 +22,7 @@ function App() {
           'Fresh vegtables',
           'herbs leaves',
           'prepckaed',
-          ' mafa red cabbage',
+          'mafa red cabbage - 1Piece',
         ]}
       />
     </Layout>
