@@ -1,0 +1,10 @@
+@import 'abstract/index';
+
+.Link {
+  color: $white;
+  font-weight: $medium;
+
+  &:hover {
+    color: $color-primary;
+  }
+}

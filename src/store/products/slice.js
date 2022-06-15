@@ -4,6 +4,7 @@ const initialState = {
   items: [],
   count: 0,
   isLoading: false,
+  error: '',
 };
 
 const productsSlice = createSlice({
@@ -11,6 +12,9 @@ const productsSlice = createSlice({
   initialState,
   reducers: {
     getSingleProductAction(state, { payload }) {
+      state.isLoading = true;
+    },
+    getSingleProductActionSuccess(state, { payload }) {
       state.items = [...state.items, payload];
       state.count++;
     },
@@ -18,15 +22,22 @@ const productsSlice = createSlice({
       state.items = payload;
       state.count = payload.length;
     },
-    getProductsIsLoadingAction(state, { payload }) {
+    setProductsIsLoadingAction(state, { payload }) {
       state.isLoading = payload;
+    },
+
+    setProductsErrorAction(state, { payload }) {
+      state.error = payload;
     },
   },
 });
 
 export const {
   getAllProductsAction,
-  getProductsIsLoadingAction,
+  setProductsIsLoadingAction,
   getSingleProductAction,
+  getSingleProductActionSuccess,
+  setProductsErrorAction,
 } = productsSlice.actions;
 export default productsSlice.reducer;
+

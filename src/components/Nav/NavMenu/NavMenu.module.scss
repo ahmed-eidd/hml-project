@@ -1,0 +1,37 @@
+@import 'abstract/index';
+
+.NavMenu {
+  @include flex(center, center, 1rem);
+
+  // &__UserIcon {
+  //   height: 1.6rem;
+  //   width: 2rem;
+  // }
+
+  &__TextContainer {
+    @include flex(center, center, 0rem, column);
+  }
+
+  &__Name {
+    @include flex(center, center, 1rem);
+
+    &__Text {
+      font-size: $text-sm;
+      font-weight: $medium;
+    }
+  }
+
+  &__Points {
+    @include flex(center, flex-end);
+    background-color: $white;
+    font-size: $text-xsm;
+    border-radius: $radius-md;
+    width: 8.2rem;
+    height: 1.9rem;
+    color: $color-primary;
+    &__Amount {
+      font-weight: $bold;
+      margin-left: 0.5rem;
+    }
+  }
+}

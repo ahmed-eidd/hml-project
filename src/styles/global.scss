@@ -1,0 +1,53 @@
+@import 'abstract/index';
+
+// Base Styling
+* {
+  margin: 0;
+  padding: 0;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+  font-size: 62.5%; // 1rem = 10px, 10px/16px = 62.5%
+
+  @media only screen and (max-width: $bp-largest) {
+    font-size: 50%;
+  }
+}
+
+body {
+  font-family: $font-primary !important;
+  font-weight: 400;
+  line-height: 1.6;
+  min-height: 100vh;
+  font-size: $text-sm;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+a:focus {
+  text-decoration: none;
+}
+a:hover,
+a:active {
+  text-decoration: none;
+}
+
+input:focus {
+  outline: none;
+}
+
+p {
+  margin-bottom: 0 !important;
+}

@@ -1,0 +1,33 @@
+@import 'abstract/index';
+
+.Nav {
+  background-color: $black;
+  @include flex(flex-start, center);
+  color: $white;
+
+  &__Links {
+    @include flex(space-between, center, 2rem);
+    margin-left: 5.5rem;
+  }
+
+  &__Second {
+    @include flex(center, center);
+    margin-left: auto;
+  }
+
+  &__SearchBar {
+    margin-left: 2rem;
+    margin-right: 3rem;
+  }
+  &__Location {
+    margin-right: 1rem;
+  }
+
+  &__Menu {
+    margin-left: 4rem;
+    margin-right: 2.4rem;
+  }
+  &__Lang {
+    margin-right: 3.6rem;
+  }
+}

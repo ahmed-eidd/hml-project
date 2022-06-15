@@ -1,0 +1,10 @@
+@import 'abstract/index';
+
+.NavLang {
+  &__Placeholder {
+    cursor: pointer;
+    font-weight: $medium;
+    text-decoration: underline;
+    text-transform: uppercase;
+  }
+}

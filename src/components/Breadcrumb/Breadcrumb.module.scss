@@ -1,0 +1,9 @@
+@import 'abstract/index';
+
+.Breadcrumb {
+  li {
+    color: $color-primary;
+    font-size: $text-md;
+    font-weight: $semi-bold;
+  }
+}

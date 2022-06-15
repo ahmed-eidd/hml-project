@@ -1,8 +1,29 @@
-import { takeLatest } from '@redux-saga/core/effects';
-import { getSingleProductAction } from './slice';
+import { call, put, takeLatest } from '@redux-saga/core/effects';
+import axiosInstance from '../../service/axios';
+import { getSingleProductApi } from './api';
+import {
+  getSingleProductAction,
+  getSingleProductActionSuccess,
+  setProductsErrorAction,
+  setProductsIsLoadingAction,
+} from './slice';
 
-function* getSingleProductSaga() {}
+function* getSingleProductSaga({ payload }) {
+  console.log('hrer');
+  yield put(setProductsIsLoadingAction(true));
 
-export default function* productsSaga() {
-  yield takeLatest(getSingleProductAction, getSingleProductSaga);
+  /* Calling the axiosInstance.get method and passing the payload as a parameter. */
+  try {
+    const response = yield call(getSingleProductApi, payload);
+    const { data } = response;
+    yield put(getSingleProductActionSuccess(data?.data?.product));
+  } catch (error) {
+    yield put(setProductsErrorAction(error));
+  } finally {
+    setProductsIsLoadingAction(false);
+  }
+}
+
+export default function* prouductsSaga() {
+  yield takeLatest(getSingleProductAction.type, getSingleProductSaga);
 }

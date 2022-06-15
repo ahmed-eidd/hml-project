@@ -1,0 +1,9 @@
+@import 'abstract/index';
+
+.Logo {
+  width: 15rem;
+  height: 10rem;
+  background-color: $white;
+  border-bottom-right-radius: $radius-md;
+  @include flex(center, center);
+}

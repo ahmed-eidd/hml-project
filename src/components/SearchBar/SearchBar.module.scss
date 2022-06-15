@@ -1,0 +1,17 @@
+@import 'abstract/index';
+
+.SearchBar {
+  width: 40rem !important;
+  border-radius: $radius-md !important;
+  overflow: hidden;
+  padding-left: 2.7rem !important;
+  padding-right: 2.7rem !important;
+  height: 4.9rem;
+  color: $black !important;
+
+  input::placeholder {
+    font-size: $text-xsm !important;
+    color: #000000;
+  }
+}
+
