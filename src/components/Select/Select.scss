@@ -1,0 +1,38 @@
+@import 'abstract/index';
+
+.ant-select-selector {
+  background-color: $color-secondary !important;
+  border: none !important;
+  border-radius: $radius-xl !important;
+  font-size: $text-base;
+  font-weight: $medium;
+  width: 8.1rem !important;
+  height: 3.7rem !important;
+  gap: 1.4rem;
+  box-shadow: none !important;
+
+  @include flex(center, center);
+  cursor: pointer;
+  .ant-select-selection-item {
+    padding: 0 1.3rem !important;
+    flex: 1 1;
+    // width: 20px;
+    // overflow: visible;
+  }
+  .ant-select-selection-item {
+    font-size: $text-base;
+    font-weight: $medium;
+  }
+}
+
+.ant-select-arrow {
+  right: 20px !important;
+}
+
+.ant-select-item-option-active:not(.ant-select-item-option-disabled) {
+  background-color: $color-secondary !important;
+}
+
+.ant-select-item-option-selected:not(.ant-select-item-option-disabled) {
+  font-weight: $medium !important;
+}

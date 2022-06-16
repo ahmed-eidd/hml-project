@@ -1,0 +1,19 @@
+@import 'abstract/index';
+
+.ant-btn {
+  border: none !important;
+  border-radius: $radius-md !important;
+  min-width: 22.2rem;
+  // padding: 2rem 0 !important;
+  height: 5.9rem !important;
+  @include flex(center, center);
+}
+
+.ant-btn-primary {
+  background: $color-primary !important;
+}
+
+.ant-btn-dark {
+  background: $black !important;
+  color: $white !important;
+}

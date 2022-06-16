@@ -1,0 +1,45 @@
+@import 'abstract/index';
+
+.Product {
+  padding-top: 6.5rem;
+  padding-bottom: 4.5rem;
+  // border-bottom: 1px solid #d6d6d6;
+  position: relative;
+  &::before {
+    content: '';
+    background-color: #d6d6d6;
+    height: 1px;
+    width: 100vw;
+    position: absolute;
+    bottom: 0;
+    left: -145px;
+  }
+  @include flex(flex-start, flex-start);
+  &__Img {
+    width: 34rem;
+    height: 28rem;
+    margin-right: 3rem;
+    border-radius: $radius-md;
+    border: 1px solid #d6d6d6;
+  }
+  &__Info {
+    max-width: 57.9rem;
+    margin-right: 4.1rem;
+    @include flex(center, flex-start, 4.4rem, column);
+    &__TitleAndPriceWrapper {
+      width: 100%;
+      @include flex(space-between, center);
+    }
+    &__Title,
+    &__Price {
+      font-size: $text-xl;
+      font-weight: $semi-bold;
+    }
+
+    &__Description {
+      font-size: $text-md;
+      line-height: 1.8;
+      @include flex(center, center, 2rem, column);
+    }
+  }
+}
