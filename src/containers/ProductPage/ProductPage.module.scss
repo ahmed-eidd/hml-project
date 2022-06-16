@@ -1,0 +1,19 @@
+@import 'abstract/index';
+
+.ProductPage {
+  &__RelatedProducts {
+    &__Title {
+      font-size: $text-xl;
+      font-weight: $semi-bold;
+    }
+    &__Products {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(229px, 1fr));
+      max-width: 100rem;
+      margin: auto;
+      justify-items: center;
+      gap: 2.7rem;
+      margin-top: 6.6rem;
+    }
+  }
+}

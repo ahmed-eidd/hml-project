@@ -6,22 +6,23 @@
   border-radius: $radius-xl !important;
   font-size: $text-base;
   font-weight: $medium;
-  width: 8.1rem !important;
+  min-width: 8.1rem !important;
   height: 3.7rem !important;
   gap: 1.4rem;
   box-shadow: none !important;
-
+  transition: all 0.4s ease-in-out;
   @include flex(center, center);
   cursor: pointer;
   .ant-select-selection-item {
-    padding: 0 1.3rem !important;
+    padding-right: 3.3rem !important;
+    padding-left: 1.3rem !important;
     flex: 1 1;
-    // width: 20px;
-    // overflow: visible;
+    transition: all 0.4s ease-in-out;
   }
   .ant-select-selection-item {
     font-size: $text-base;
     font-weight: $medium;
+    transition: all 0.4s ease-in-out;
   }
 }
 

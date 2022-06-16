@@ -6,6 +6,7 @@ import {
   getSingleProductActionSuccess,
   setProductsErrorAction,
   setProductsIsLoadingAction,
+  getRelatedProductsAction,
 } from './slice';
 
 function* getSingleProductSaga({ payload }) {
@@ -17,10 +18,11 @@ function* getSingleProductSaga({ payload }) {
     const response = yield call(getSingleProductApi, payload);
     const { data } = response;
     yield put(getSingleProductActionSuccess(data?.data?.product));
+    yield put(getRelatedProductsAction(data?.data?.relatedProducts));
   } catch (error) {
     yield put(setProductsErrorAction(error));
   } finally {
-    setProductsIsLoadingAction(false);
+    yield put(setProductsIsLoadingAction(false));
   }
 }
 
