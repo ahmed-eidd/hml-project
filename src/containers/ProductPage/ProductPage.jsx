@@ -17,7 +17,7 @@ function ProductPage() {
   const ref = useRef(true);
   useEffect(() => {
     if (ref.current) {
-      dispatch(getSingleProductAction('10430'));
+      // dispatch(getSingleProductAction('10430'));
     }
     ref.current = null;
   }, []);

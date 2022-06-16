@@ -1,0 +1,15 @@
+@import 'abstract/index';
+
+.FooterLinks {
+  @include flex(center, flex-start, 1.4rem, column);
+
+  &__Title {
+    font-size: $text-base;
+    font-weight: $semi-bold;
+    color: $white;
+  }
+
+  &__Wrapper {
+    @include flex(center, flex-start, 1rem, column);
+  }
+}

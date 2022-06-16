@@ -1,0 +1,45 @@
+@import 'abstract/index';
+
+.Footer {
+  background-color: $black;
+  color: $white;
+  padding: 3rem $layout-padding-x;
+  @include flex(space-between, center, 3rem, column);
+
+  &__ContentWrapper {
+    width: 100%;
+    @include flex(space-between, flex-start, 0);
+  }
+
+  &__Logo {
+    height: 4.1rem;
+    min-width: 8.5rem;
+  }
+
+  &__About {
+    width: 26.5rem;
+
+    &__Text {
+      margin-top: 1.9rem;
+      margin-bottom: 3rem !important;
+    }
+
+    &__SocialMediaIcons {
+      margin-top: 1.5rem;
+      @include flex(flex-start, center, 1rem);
+    }
+  }
+
+  &__Apps {
+    &__Icons {
+      margin-top: 1.5rem;
+      @include flex(center, center, 1rem, column);
+    }
+  }
+}
+// GLobal
+.Title {
+  color: $white;
+  font-weight: $semi-bold;
+  font-size: $text-base;
+}

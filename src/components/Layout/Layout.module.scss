@@ -4,6 +4,6 @@
   overflow: hidden;
   &__Content {
     background-color: $white;
-    padding: 7rem 14.9rem 7.9rem 14.9rem;
+    padding: $layout-padding-y $layout-padding-y;
   }
 }
