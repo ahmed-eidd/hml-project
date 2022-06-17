@@ -1,23 +1,66 @@
-import React from 'react';
-import { Image, Skeleton } from 'antd';
+import React, { useState } from 'react';
+import { Skeleton } from 'antd';
+import { useDispatch } from 'react-redux';
 import classes from './Product.module.scss';
 import { extendClasses } from '../../utilities/extendClasses';
 import { ReactComponent as Icon } from '../../assets/arrowDown.svg';
 import Select from '../Select/Select';
 import Button from '../Button/Button';
+import {
+  addSingleProductToCartAction,
+  deleteSingleProductFromCartAction,
+  updateSingleProductInCartAction,
+} from '../../store/products/slice';
+import CounterBtn from '../CoutnerBtn/CounterBtn';
 
 const Product = ({
   img,
   name,
   productDes,
   price,
-  isLoading = true,
-  qunatity,
+  isLoading,
+  isLoadingCart,
+  quantities = [],
   className,
   style,
+  id,
+  inCart,
 }) => {
+  const [currentQuantity, setCurrentQuantity] = useState(1);
+  const dispatch = useDispatch();
+  const onQuantityChangeHandler = (value) => {
+    setCurrentQuantity(value);
+    if (inCart) {
+      onUpateProductToCartHandler(value);
+    }
+  };
+
+  const onAddProductToCartHandler = () => {
+    dispatch(addSingleProductToCartAction({ id, quantity: currentQuantity }));
+  };
+
+  const onDeleteProductFromCartHandler = () => {
+    if (window.confirm('Are you sure?')) {
+      dispatch(deleteSingleProductFromCartAction(inCart.itemId));
+      setCurrentQuantity(1);
+    }
+  };
+
+  const onUpateProductToCartHandler = (amount) => {
+    if (amount === 0) {
+      onDeleteProductFromCartHandler();
+    } else {
+      dispatch(
+        updateSingleProductInCartAction({
+          id: inCart.itemId,
+          quantity: amount,
+        })
+      );
+    }
+  };
+
   return (
-    <div className={extendClasses(classes.Product, className)}>
+    <div style={style} className={extendClasses(classes.Product, className)}>
       {isLoading ? (
         <div className={classes.Product__Skeleton}>
           <Skeleton.Image />
@@ -29,8 +72,8 @@ const Product = ({
           <img src={img} alt='product' className={classes.Product__Img} />
           <div className={classes.Product__Info}>
             <div className={classes.Product__Info__TitleAndPriceWrapper}>
-              <h3 className={classes.Product__Info__Title}>Product Title</h3>
-              <p className={classes.Product__Info__Price}>9.99 LE</p>
+              <h3 className={classes.Product__Info__Title}>{name}</h3>
+              <p className={classes.Product__Info__Price}>{price + ' LE'}</p>
             </div>
             <p className={classes.Product__Info__Description}>
               <span>
@@ -48,13 +91,37 @@ const Product = ({
                 vegetable can be used in a variety of recipes
               </span>
             </p>
-            <Button>Add</Button>
-          </div>
 
+            {inCart ? (
+              <CounterBtn
+                loading={isLoadingCart}
+                count={inCart.quantity}
+                onDelete={onDeleteProductFromCartHandler}
+                onIncrement={() =>
+                  onUpateProductToCartHandler(+inCart.quantity + 1)
+                }
+                onDecrement={() =>
+                  onUpateProductToCartHandler(+inCart.quantity - 1)
+                }
+              />
+            ) : (
+              <Button
+                onClick={onAddProductToCartHandler}
+                loading={isLoadingCart}
+                disabled={isLoadingCart}
+              >
+                Add
+              </Button>
+            )}
+          </div>
           <Select
             icon={<Icon />}
-            loading={isLoading}
-            // overlayClassName={classes.Product__DropdownMenu}
+            loading={isLoadingCart}
+            disabled={isLoadingCart}
+            onChange={onQuantityChangeHandler}
+            options={quantities}
+            value={inCart ? inCart.quantity : currentQuantity}
+            defaultValue={inCart ? inCart.quantity : quantities[0]?.value}
           />
         </>
       )}

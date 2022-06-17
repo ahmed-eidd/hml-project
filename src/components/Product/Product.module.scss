@@ -43,6 +43,10 @@
       font-weight: $semi-bold;
     }
 
+    &__Price {
+      min-width: 7rem;
+    }
+
     &__Description {
       font-size: $text-md;
       line-height: 1.8;
