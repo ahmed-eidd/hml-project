@@ -5,6 +5,8 @@ const axiosInstance = axios.create({
   responseType: 'json',
 });
 
+// token is here instead of env file for demo purposes
+
 let token =
   'koPYkiTVWH8uml21PPdSH8yKzUZQROM4mVLTYqzHYAPFSVWprpGtjeZuDioV3170KZAWatYdfalk0eGq';
 

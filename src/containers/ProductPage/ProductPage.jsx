@@ -8,20 +8,29 @@ import { ArrToValueAndLabel } from '../../utilities/ArrToValueAndLabel';
 import classes from './ProductPage.module.scss';
 
 function ProductPage() {
+  // Redux
   const dispatch = useDispatch();
+
+  // Redux Selectors
   const product = useSelector((state) => state?.products?.items[0]);
   const relatedProducts = useSelector(
     (state) => state?.products?.relatedProducts
   );
   const productIsLoading = useSelector((state) => state?.products?.isLoading);
   const cartIsLoading = useSelector((state) => state?.products?.isLoadingCart);
+
+  // React v18.0.0+ call useEffect twice on initial render, a work around using useRef.
   const ref = useRef(true);
+
+  // useEffect for calling the product
   useEffect(() => {
     if (ref.current) {
       dispatch(getSingleProductAction('10430'));
     }
     ref.current = null;
-  }, []);
+  }, [dispatch]);
+
+  // JSX
   return (
     <>
       <Breadcrumb

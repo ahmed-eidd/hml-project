@@ -1,5 +1,4 @@
 import { call, put, takeLatest } from '@redux-saga/core/effects';
-import axiosInstance from '../../service/axios';
 import {
   getSingleProductApi,
   addSingleProductToCartApi,

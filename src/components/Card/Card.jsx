@@ -22,9 +22,14 @@ const Card = ({
   discount,
   inCart,
 }) => {
+  // Local State
   const [loading, setLoading] = useState(false);
   const [currentQuantity, setCurrentQuantity] = useState(1);
+
+  // Redux
   const dispatch = useDispatch();
+
+  // Handlers
   const onQuantityChangeHandler = (value) => {
     setCurrentQuantity(value);
     if (inCart) {
@@ -52,9 +57,12 @@ const Card = ({
       );
     }
   };
+
+  /* useEffect is used to run setLoading after the component rerenders  . */
   useEffect(() => {
     setLoading(false);
   }, [inCart, inCart?.quantity]);
+
   return (
     <div className={classes.Card}>
       <FavIcon className={classes.Card__FavBtn} />

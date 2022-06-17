@@ -16,7 +16,6 @@ import CounterBtn from '../CoutnerBtn/CounterBtn';
 const Product = ({
   img,
   name,
-  productDes,
   price,
   isLoading,
   isLoadingCart,
@@ -26,8 +25,13 @@ const Product = ({
   id,
   inCart,
 }) => {
+  // Local state
   const [currentQuantity, setCurrentQuantity] = useState(1);
+
+  // Redux
   const dispatch = useDispatch();
+
+  // Handlers
   const onQuantityChangeHandler = (value) => {
     setCurrentQuantity(value);
     if (inCart) {
@@ -59,6 +63,7 @@ const Product = ({
     }
   };
 
+  // JSX
   return (
     <div style={style} className={extendClasses(classes.Product, className)}>
       {isLoading ? (
